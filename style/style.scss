@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+
+body {
+    background-color: #191c29;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+    >.row {
+        width: 70%;
+        height: 70vh;
+        justify-content: center;
+        align-items: center;
+
+        >.card {
+            width: 400px;
+            height: 600px;
+            position: relative;
+            transition: .7s;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+
+
+            >.wrapper {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                transition: .7s ease;
+                overflow: hidden;
+
+
+                >.cover {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    object-fit: cover;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.675) 10%, rgba(0, 0, 0, 0.565) 45%, rgba(0, 0, 0, 0.342) 70% , transparent);
+                    opacity: 0;
+                    transition: .7s ease;
+                    z-index: 1;
+                }
+            }
+
+            >.character {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                transition: .7s;
+                opacity: 0;
+                // z-index: -1;
+            }
+
+            >.text {
+                width: 50%;
+                position: absolute;
+                transition: .7s ease;
+            }
+
+            &:hover>.wrapper {
+                transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0px);
+                box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+                
+            }
+
+            &:hover>.wrapper::before {
+                opacity: 1;
+            }
+
+            &:hover>.character {
+                transform: translateZ(250px) translateY(-20%);
+                opacity: 1;
+            }
+
+            &:hover>.text {
+                transform: translateZ(250px) translateY(-40%);
+            }
+        }
+
+    }
+}
